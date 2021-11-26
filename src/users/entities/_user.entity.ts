@@ -1,9 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Model, ObjectId } from 'mongoose';
+import { Document, Model, ObjectId, Schema as MongooseSchema } from 'mongoose';
 import { UnprocessableEntityException } from '@nestjs/common';
 import { hash, compare } from 'bcryptjs';
 import { Constants } from '../../utils/constants';
 import { Password } from '../../auth/utils/Password';
+import { PaymentSchema } from './payment-method.entity';
+import { registerPaymentSchemaDiscriminator } from './register-payment-schema-discriminator';
 
 export type UserDocument = User & Document;
 
@@ -73,9 +75,17 @@ export class User {
 
   @Prop({ index: true, unique: true, sparse: true })
   googleId: string;
+
+  @Prop({ required: true, type: [PaymentSchema] })
+  favouritePaymentMethods: unknown[];
 }
 
 const UserSchema = SchemaFactory.createForClass(User);
+
+const paymentArraySchema = UserSchema.path(
+  'favouritePaymentMethods',
+) as MongooseSchema.Types.DocumentArray;
+registerPaymentSchemaDiscriminator(paymentArraySchema);
 
 // UserSchema.virtual('NameAndEmail').get(function (this: UserDocument) {
 //   return `${this.email} + ${this.username}`;

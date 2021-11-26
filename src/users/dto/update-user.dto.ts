@@ -1,4 +1,14 @@
-import { IsBoolean, IsMongoId, IsOptional, IsString } from 'class-validator';
+import {
+  ArrayMinSize,
+  IsArray,
+  IsBoolean,
+  IsMongoId,
+  IsOptional,
+  IsString,
+  MinLength,
+} from 'class-validator';
+import { addFawryDto } from './fawry.dto';
+import { addPaypalDto } from './paypal.dto';
 
 export class UpdateUserDto {
   @IsBoolean()
@@ -12,4 +22,8 @@ export class UpdateUserDto {
   @IsString()
   @IsOptional()
   password?: string;
+
+  @IsArray()
+  @IsOptional()
+  favouritePaymentMethods?: any;
 }
