@@ -1,3 +1,4 @@
+import { Transform, Type } from 'class-transformer';
 import {
   ArrayMinSize,
   IsArray,
@@ -7,6 +8,7 @@ import {
   IsString,
   MinLength,
 } from 'class-validator';
+import { Address } from '../entities/address.entity';
 import { addFawryDto } from './fawry.dto';
 import { addPaypalDto } from './paypal.dto';
 
@@ -26,4 +28,8 @@ export class UpdateUserDto {
   @IsArray()
   @IsOptional()
   favouritePaymentMethods?: any;
+
+  @Type(() => Address)
+  @IsOptional()
+  address?: Address;
 }

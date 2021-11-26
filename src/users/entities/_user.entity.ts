@@ -6,6 +6,7 @@ import { Constants } from '../../utils/constants';
 import { Password } from '../../auth/utils/Password';
 import { PaymentSchema } from './payment-method.entity';
 import { registerPaymentSchemaDiscriminator } from './register-payment-schema-discriminator';
+import { Address, AddressSchema } from './address.entity';
 
 export type UserDocument = User & Document;
 
@@ -78,6 +79,9 @@ export class User {
 
   @Prop({ required: true, type: [PaymentSchema] })
   favouritePaymentMethods: unknown[];
+
+  @Prop({ type: AddressSchema })
+  address: Address;
 }
 
 const UserSchema = SchemaFactory.createForClass(User);

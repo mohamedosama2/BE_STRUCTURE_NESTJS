@@ -12,6 +12,8 @@ import { PaginationParams } from 'src/utils/paginationParams';
 import { CreateUserDto } from './dto/create-user.dto';
 import { FilterUserDto } from './dto/filter-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Category } from './entities/category.entity';
+import { Post } from './entities/post.entity';
 import {
   Student,
   StudentDocument,
@@ -26,6 +28,8 @@ export class UsersService {
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     @InjectModel(Student.name) private studentModel: Model<Student>,
     @InjectModel(Teacher.name) private teacherModel: Model<Teacher>,
+    @InjectModel(Post.name) private readonly postModel: Model<Post>,
+    @InjectModel(Category.name) private readonly categoryModel: Model<Category>,
   ) {}
 
   async register(registerationData: CreateUserDto) {

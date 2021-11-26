@@ -10,6 +10,8 @@ import { Model } from 'mongoose';
 import { MulterModule } from '@nestjs/platform-express';
 import { UploadCloudinary } from 'src/utils/services/upload-cloudinary';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Post, PostSchema } from './entities/post.entity';
+import { Category, CategorySchema } from './entities/category.entity';
 
 @Module({
   imports: [
@@ -21,6 +23,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
           { name: Student.name, schema: StudentSchema },
           { name: Teacher.name, schema: TeacherSchema },
         ],
+      },
+      {
+        name: Post.name,
+        schema: PostSchema,
+      },
+      {
+        name: Category.name,
+        schema: CategorySchema,
       },
     ]),
     MulterModule.registerAsync({
