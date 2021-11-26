@@ -29,6 +29,8 @@ export class AllExceptionsFilter<T extends HttpException>
       });
     };
 
+    // console.log(exception);
+
     // Throw an exceptions for either
     if (exception instanceof MongooseError || exception instanceof MongoError) {
       responseMessage(
