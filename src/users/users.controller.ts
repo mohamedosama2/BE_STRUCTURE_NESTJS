@@ -29,12 +29,15 @@ import { ChangePasswordDto } from 'src/users/dto/change-password.dto';
 import { PaginationParams } from 'src/utils/paginationParams';
 import ParamsWithId from 'src/utils/paramsWithId';
 import { Public } from 'src/auth/decorators/public.decorator';
+import { ClientProxy } from '@nestjs/microservices';
 
 @Controller('users')
 export class UsersController {
   constructor(
     private readonly usersService: UsersService,
     @Inject(REQUEST) private readonly req: Record<string, unknown>,
+    @Inject('NESTJS_SERVICE') private readonly client: ClientProxy,
+    @Inject('NESTJS_SERVICE_2') private readonly client2: ClientProxy,
   ) {}
 
   @Roles(UserRole.STUDENT)
@@ -77,9 +80,17 @@ export class UsersController {
     );
   }
 
+  // @Public()
+  // @Get(':id')
+  // async fetchUserById(@Param() { id }: ParamsWithId) {
+  //   return await this.usersService.findOne({ _id: id } as FilterUserDto);
+  // }
+
+  @Get('publisher')
   @Public()
-  @Get(':id')
-  async fetchUserById(@Param() { id }: ParamsWithId) {
-    return await this.usersService.findOne({ _id: id } as FilterUserDto);
+  publisher() {
+    this.client.emit<any>('nestjs_message', 'NESTJS_PUBLISHER');
+    this.client2.emit<any>('nestjs_message_2', 'NESTJS_PUBLISHER_2');
+    return 'NESTJS PUBLISHERS';
   }
 }
