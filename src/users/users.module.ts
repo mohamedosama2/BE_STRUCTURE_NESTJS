@@ -10,6 +10,8 @@ import { Model } from 'mongoose';
 import { MulterModule } from '@nestjs/platform-express';
 import { UploadCloudinary } from 'src/utils/services/upload-cloudinary';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MessageQueueModule } from 'src/message-queue/message-queue.module';
+import { MessageQueueService } from 'src/message-queue/message-queue.service';
 
 @Module({
   imports: [
@@ -28,6 +30,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useClass: UploadCloudinary,
       inject: [ConfigService],
     }),
+    MessageQueueModule,
   ],
   controllers: [UsersController],
   providers: [UsersService],

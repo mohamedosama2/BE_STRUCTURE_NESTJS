@@ -29,11 +29,12 @@ import { ChangePasswordDto } from 'src/users/dto/change-password.dto';
 import { PaginationParams } from 'src/utils/paginationParams';
 import ParamsWithId from 'src/utils/paramsWithId';
 import { Public } from 'src/auth/decorators/public.decorator';
-
+import { MessageQueueService } from 'src/message-queue/message-queue.service';
 @Controller('users')
 export class UsersController {
   constructor(
     private readonly usersService: UsersService,
+    private readonly messageQueueService: MessageQueueService,
     @Inject(REQUEST) private readonly req: Record<string, unknown>,
   ) {}
 
@@ -77,9 +78,20 @@ export class UsersController {
     );
   }
 
+  // @Public()
+  // @Get(':id')
+  // async fetchUserById(@Param() { id }: ParamsWithId) {
+  //   return await this.usersService.findOne({ _id: id } as FilterUserDto);
+  // }
+
   @Public()
-  @Get(':id')
-  async fetchUserById(@Param() { id }: ParamsWithId) {
-    return await this.usersService.findOne({ _id: id } as FilterUserDto);
+  @Get('publisher')
+  async publish() {
+    await this.messageQueueService.publishToChannel({
+      routingKey: 'test',
+      exchangeName: '',
+      data: 'remah',
+    });
+    return 'OK';
   }
 }
