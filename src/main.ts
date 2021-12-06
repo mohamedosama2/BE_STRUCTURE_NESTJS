@@ -4,6 +4,12 @@ import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './utils/filters/http-exception.filter';
 import * as helmet from 'helmet';
 import * as logger from 'morgan';
+import {
+  DocumentBuilder,
+  SwaggerCustomOptions,
+  SwaggerModule,
+} from '@nestjs/swagger';
+import { FilterUserDto } from './users/dto/filter-user.dto';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(logger('dev'));
@@ -20,6 +26,23 @@ async function bootstrap() {
     }),
   );
   app.useGlobalFilters(new AllExceptionsFilter());
+
+  // swagger config
+  const options = new DocumentBuilder()
+    .setTitle('NEST STRUCTURE')
+    .setDescription('The Nest.js structure API description')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
+  const customOptions: SwaggerCustomOptions = {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  };
+  const document = SwaggerModule.createDocument(app, options, {
+    extraModels: [FilterUserDto], // here is adequate , no need for write on controller
+  });
+  SwaggerModule.setup('api', app, document, customOptions);
   await app.listen(3000);
 }
 bootstrap();

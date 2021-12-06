@@ -6,6 +6,7 @@ import {
   HttpCode,
   UseGuards,
   Inject,
+  Query,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
@@ -16,12 +17,13 @@ import { LoginGoogleDto } from './dto/login-google.dto';
 import { LoginFacebookDto } from './dto/login-facebook.dto';
 import { GoogleOauthGuard } from './guards/googleToken.guard';
 import { REQUEST } from '@nestjs/core';
-import { User } from 'src/users/models/_user.model';
+import { User, UserRole } from 'src/users/models/_user.model';
 import { CheckCodeToResetDto } from './dto/check-code-to-reset.dto';
 import { UsersService } from 'src/users/users.service';
 import { FilterUserDto } from 'src/users/dto/filter-user.dto';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { ApiBody, ApiQuery } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -64,12 +66,17 @@ export class AuthController {
 
   @Public()
   @HttpCode(HttpStatus.OK)
+  @ApiBody({ type: [CheckCodeToResetDto] })
+  @ApiQuery({ name: 'role', enum: UserRole }) // must this to check list
   @Post('/check-code-to-reset')
-  async checkCodeToReset(@Body() { phone, code }: CheckCodeToResetDto) {
-    return await this.phoneConfirmationService.verificationCode({
-      phone,
-      code,
-    });
+  async checkCodeToReset(
+    @Body() test: CheckCodeToResetDto[],
+    @Query('role') role: UserRole,
+  ) {
+    // return await this.phoneConfirmationService.verificationCode({
+    //   phone,
+    //   code,
+    // });
   }
 
   @Public()
