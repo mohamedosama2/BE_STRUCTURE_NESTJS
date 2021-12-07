@@ -43,7 +43,7 @@ async function bootstrap() {
     },
   };
   const document = SwaggerModule.createDocument(app, options, {
-    extraModels: [FilterUserDto, PaginatedDto, CreateUserDto, User], // here is adequate , no need for write on controller
+    extraModels: [FilterUserDto, PaginatedDto, CreateUserDto], // here is adequate , no need for write on controller
   });
   SwaggerModule.setup('api', app, document, customOptions);
   await app.listen(process.env.PORT || 3000);

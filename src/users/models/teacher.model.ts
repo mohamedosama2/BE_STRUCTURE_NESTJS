@@ -8,7 +8,7 @@ export class Teacher {
   role: string;
 
   @Prop({ required: true })
-  bio: Number;
+  bio: number;
 }
 
 const TeacherSchema = SchemaFactory.createForClass(Teacher);
