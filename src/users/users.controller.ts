@@ -21,7 +21,7 @@ import { request } from 'http';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { FilterUserDto } from './dto/filter-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User, UserRole } from './models/_user.model';
+import { User, UserDocument, UserRole } from './models/_user.model';
 import { UsersService } from './users.service';
 import { REQUEST } from '@nestjs/core';
 import { AuthUser } from 'src/auth/decorators/me.decorator';
@@ -29,7 +29,9 @@ import { ChangePasswordDto } from 'src/users/dto/change-password.dto';
 import { PaginationParams } from 'src/utils/paginationParams';
 import ParamsWithId from 'src/utils/paramsWithId';
 import { Public } from 'src/auth/decorators/public.decorator';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
+import { ApiPaginatedResponse } from 'src/utils/ApiPaginatedResponse';
+import CreateUserDto from './dto/create-user.dto';
 
 @ApiBearerAuth()
 @ApiTags('users')
@@ -41,6 +43,7 @@ export class UsersController {
   ) {}
 
   @Roles(UserRole.STUDENT)
+  @ApiPaginatedResponse(User)
   @Get()
   findAll(@Query() paginationOptions: PaginationParams) {
     return this.usersService.findAll(paginationOptions);
@@ -52,12 +55,16 @@ export class UsersController {
   }
 
   @Patch('profile')
-  @UseInterceptors(FileFieldsInterceptor([{ name: 'photo', maxCount: 1 }]))
+  @UseInterceptors(
+    FileFieldsInterceptor([{ name: 'photo', maxCount: 1 }, { name: 'photos' }]),
+  )
+  @ApiConsumes('multipart/form-data')
   async updateProfile(
     @UploadedFiles()
     files,
     @Body() updateUserData: UpdateUserDto,
   ) {
+    // console.log(files.photos);
     if (files && files.photo) updateUserData.photo = files.photo[0].secure_url;
 
     delete updateUserData.enabled;

@@ -63,7 +63,7 @@ export class User {
   password: string;
 
   @Prop({ default: false })
-  enabled: Boolean;
+  enabled: boolean;
 
   @Prop()
   photo: string;

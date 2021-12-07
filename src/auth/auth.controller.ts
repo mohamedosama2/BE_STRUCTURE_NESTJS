@@ -23,7 +23,12 @@ import { UsersService } from 'src/users/users.service';
 import { FilterUserDto } from 'src/users/dto/filter-user.dto';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { ApiBody, ApiQuery } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiBody,
+  ApiOkResponse,
+  ApiQuery,
+} from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -80,6 +85,14 @@ export class AuthController {
   }
 
   @Public()
+  @ApiOkResponse({
+    description: 'in case of successfull',
+    type: ResetPasswordDto,
+  })
+  @ApiBadRequestResponse({
+    description: 'in case of fail',
+    type: LoginGoogleDto,
+  })
   @HttpCode(HttpStatus.OK)
   @Post('reset-password')
   async resetPassword(@Body() { phone, code, password }: ResetPasswordDto) {

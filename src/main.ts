@@ -10,6 +10,9 @@ import {
   SwaggerModule,
 } from '@nestjs/swagger';
 import { FilterUserDto } from './users/dto/filter-user.dto';
+import { PaginatedDto } from './utils/paginated.dto';
+import { User } from './users/models/_user.model';
+import { CreateUserDto } from './users/dto/create-user.dto';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(logger('dev'));
@@ -40,7 +43,7 @@ async function bootstrap() {
     },
   };
   const document = SwaggerModule.createDocument(app, options, {
-    extraModels: [FilterUserDto], // here is adequate , no need for write on controller
+    extraModels: [FilterUserDto, PaginatedDto, CreateUserDto, User], // here is adequate , no need for write on controller
   });
   SwaggerModule.setup('api', app, document, customOptions);
   await app.listen(3000);

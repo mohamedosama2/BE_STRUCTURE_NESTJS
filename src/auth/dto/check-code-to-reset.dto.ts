@@ -22,7 +22,7 @@ export class CheckCodeToResetDto {
   @ApiProperty({
     type: 'array',
     items: {
-      oneOf: [
+      anyOf: [
         { $ref: getSchemaPath(FilterUserDto) },
         { $ref: getSchemaPath(LoginDto) },
       ],
