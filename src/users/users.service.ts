@@ -8,7 +8,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, PaginateModel } from 'mongoose';
 import { ChangePasswordDto } from 'src/users/dto/change-password.dto';
-import { PaginationParams } from 'src/utils/paginationParams';
+import { PaginationParams } from 'src/utils/paginationParams.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { FilterUserDto } from './dto/filter-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';

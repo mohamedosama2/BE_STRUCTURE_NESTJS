@@ -26,7 +26,7 @@ import { UsersService } from './users.service';
 import { REQUEST } from '@nestjs/core';
 import { AuthUser } from 'src/auth/decorators/me.decorator';
 import { ChangePasswordDto } from 'src/users/dto/change-password.dto';
-import { PaginationParams } from 'src/utils/paginationParams';
+import { PaginationParams } from 'src/utils/paginationParams.dto';
 import ParamsWithId from 'src/utils/paramsWithId';
 import { Public } from 'src/auth/decorators/public.decorator';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
