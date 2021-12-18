@@ -87,6 +87,7 @@ export class UsersController {
   @Public()
   @Get('publisher')
   async publish() {
+    console.log(process.env.name);
     await this.messageQueueService.publishToChannel({
       routingKey: 'test',
       exchangeName: '',
