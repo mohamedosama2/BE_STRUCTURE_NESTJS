@@ -34,12 +34,9 @@ export class AuthController {
 
   @Public()
   @Post('/signup')
-  async register(@Body() RegisterDto: RegisterDto) {
-    let user = await this.authService.register(RegisterDto);
-    await this.phoneConfirmationService.sendSMS({
-      phone: RegisterDto.phone,
-    });
-    return user;
+  async register() {
+    for (let i = 0; i < 100000; i++) {}
+    return 'OK';
   }
 
   @Public()
