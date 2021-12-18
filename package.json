@@ -41,6 +41,7 @@
     "config": "^3.3.6",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.2.2",
     "mongoose": "^6.1.2",
     "mongoose-aggregate-paginate-v2": "^1.0.5",
     "mongoose-auto-increment": "^5.0.1",
