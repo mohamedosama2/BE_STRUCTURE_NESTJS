@@ -5,6 +5,7 @@ module.exports = {
       script: './dist/main.js',
       instances: '3',
       exec_mode: 'cluster',
+      autorestart: true,
     },
     {
       name: 'Consumer',
