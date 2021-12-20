@@ -9,7 +9,7 @@ ENV NODE_ENV=production
 
 RUN npm run build
 
-EXPOSE 5006
+EXPOSE 5000
 
 CMD ["pm2-runtime", "start","ecosystem.config.js"]
 
