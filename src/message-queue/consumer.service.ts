@@ -23,7 +23,7 @@ async function testConsumer(): Promise<void> {
     channel.consume(Constants.MessageQueues.TEST, async function (msg) {
       // parse message
       const msgBody = msg.content.toString();
-      const data = JSON.parse(msgBody);
+      // const data = JSON.parse(msgBody);
       console.log('test', data);
       try {
         const promises = [];
