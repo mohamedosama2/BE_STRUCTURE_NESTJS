@@ -23,22 +23,22 @@ async function testConsumer(): Promise<void> {
     channel.consume(Constants.MessageQueues.TEST, async function (msg) {
       // parse message
       const msgBody = msg.content.toString();
-      // const data = JSON.parse(msgBody);
+      const data = JSON.parse(msgBody);
       console.log('test');
       try {
         const promises = [];
-        // for (let i = 0; i < 100000; i++) {
-        //   promises.push(
-        //     new Promise(function (resolve, reject) {
-        //       if (1) {
-        //         for (let i = 0; i < 100000; i++) {
-        //           for (let j = 0; j < 100000; j++) {}
-        //         }
-        //         resolve('Stuff worked!');
-        //       }
-        //     }),
-        //   );
-        // }
+        for (let i = 0; i < 100000; i++) {
+          promises.push(
+            new Promise(function (resolve, reject) {
+              if (1) {
+                for (let i = 0; i < 100000; i++) {
+                  for (let j = 0; j < 100000; j++) {}
+                }
+                resolve('Stuff worked!');
+              }
+            }),
+          );
+        }
         await Promise.all(promises);
         console.log('finish');
         await channel.ack(msg);
