@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'Nest App',
       script: './dist/main.js',
-      instances: '3',
+      instances: '1',
       autorestart: false,
       watch: true,
       max_memory_restart: '1G',
