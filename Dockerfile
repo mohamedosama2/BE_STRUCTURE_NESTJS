@@ -12,5 +12,5 @@ RUN npm run build
 
 EXPOSE 5006
 
-CMD ["pm2-runtime", "start","./dist/main"]
+CMD ["pm2-runtime", "start","dist/main"]
 
