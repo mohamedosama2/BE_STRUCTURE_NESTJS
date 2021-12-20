@@ -12,5 +12,5 @@ RUN npm run build
 
 EXPOSE 5006
 
-CMD ["pm2-runtime", "start","ecosystem.config.js","--env","production"]
+CMD ["pm2-runtime", "start","ecosystem.config.js"]
 
