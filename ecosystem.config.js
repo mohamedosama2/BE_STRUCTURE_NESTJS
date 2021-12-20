@@ -1,6 +1,7 @@
 module.exports = {
   apps: [
     {
+      name: 'Nest App',
       script: './dist/main.js',
     },
     {
