@@ -1,5 +1,5 @@
 FROM node:14.16.0-alpine3.13
-RUN sudo npm install pm2@2.9.3  -g
+RUN  npm install pm2@2.9.3  -g
 
 COPY package.json .
 COPY package-lock.json .
