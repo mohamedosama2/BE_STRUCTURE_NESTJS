@@ -55,7 +55,6 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-google-token": "^0.1.2",
     "passport-local": "^1.0.0",
-    "pm2": "^2.9.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
