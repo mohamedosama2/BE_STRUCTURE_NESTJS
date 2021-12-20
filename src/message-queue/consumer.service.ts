@@ -24,7 +24,7 @@ async function testConsumer(): Promise<void> {
       // parse message
       const msgBody = msg.content.toString();
       // const data = JSON.parse(msgBody);
-      console.log('test', data);
+      console.log('test');
       try {
         const promises = [];
         // for (let i = 0; i < 100000; i++) {
