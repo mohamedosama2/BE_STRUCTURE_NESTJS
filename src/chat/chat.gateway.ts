@@ -20,7 +20,7 @@ import { WebsocketsExceptionFilter } from './filters/WebsocketsException.filter'
   cors: {
     origin: '*',
   },
-  transports: ['websocket', 'polling'],
+  transports: ['websocket'],
   namespace: 'chat',
 })
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
