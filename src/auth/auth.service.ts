@@ -85,7 +85,7 @@ export class AuthService {
         _id: decoded.userId,
       } as FilterUserDto);
 
-      if (!user || user.enabled === false) {
+      if (!user) {
         return false;
       }
       return user;

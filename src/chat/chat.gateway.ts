@@ -39,7 +39,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
         client.handshake.headers.authorization.split(' ')[1],
       );
     // console.log(user);
-    if (user) client.join(`user_${user._id}`);
+    if (user) client.join(`${user._id}`);
     else client.disconnect();
   }
 
@@ -53,7 +53,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   async testListen(@MessageBody() data: any, @AuthUser() me: User) {
     console.log(data, me.role);
     // throw new WsException('test exception event'); // Nest will handle the thrown exception and emit the exception message
-    this.server.to(`user_${me._id}`).emit('test-emit', { msg: 'successful' });
+    this.server.to(`${data.id}`).emit('test-emit', { msg: 'successful' });
     return data;
   }
 }

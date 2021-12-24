@@ -4,8 +4,10 @@ import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './utils/filters/http-exception.filter';
 import * as helmet from 'helmet';
 import * as logger from 'morgan';
+import { RedisIoAdapter } from './chat/redisIoAdapter';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useWebSocketAdapter(new RedisIoAdapter(app));
   app.use(logger('dev'));
   app.enableCors();
   app.use(helmet());
