@@ -24,7 +24,7 @@ export class MessageQueueService
       this._operationsChannelWrapper = await this._connection.createChannel({
         setup: function (channel: Channel) {
           return Promise.all([
-            channel.assertQueue(Constants.MessageQueues.TEST, {
+            channel.assertQueue(Constants.MessageQueues.TEST1, {
               durable: true,
             }),
           ]);

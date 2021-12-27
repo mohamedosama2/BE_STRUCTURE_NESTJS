@@ -1,4 +1,8 @@
-import { Module, UnprocessableEntityException } from '@nestjs/common';
+import {
+  forwardRef,
+  Module,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -10,7 +14,7 @@ import { Model } from 'mongoose';
 import { MulterModule } from '@nestjs/platform-express';
 import { UploadCloudinary } from 'src/utils/services/upload-cloudinary';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MessageQueueModule } from 'src/message-queue/message-queue.module';
+import { MessageQueueModule } from 'src/message-queue/message-queue-publisher.module';
 import { MessageQueueService } from 'src/message-queue/message-queue.service';
 
 @Module({
@@ -30,7 +34,7 @@ import { MessageQueueService } from 'src/message-queue/message-queue.service';
       useClass: UploadCloudinary,
       inject: [ConfigService],
     }),
-    MessageQueueModule,
+    forwardRef(() => MessageQueueModule),
   ],
   controllers: [UsersController],
   providers: [UsersService],

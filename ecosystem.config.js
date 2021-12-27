@@ -9,7 +9,7 @@ module.exports = {
     },
     {
       name: 'Consumer',
-      script: './dist/message-queue/consumer.service.js',
+      script: './dist/message-queue/worker.js',
       instances: 1,
     },
   ],
