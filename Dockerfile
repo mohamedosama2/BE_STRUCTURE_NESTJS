@@ -11,5 +11,5 @@ RUN npm run build
 
 EXPOSE 5000
 
-CMD ["pm2", "reload","ecosystem.config.js"]
+CMD ["pm2-runtime", "start","ecosystem.config.js"]
 
