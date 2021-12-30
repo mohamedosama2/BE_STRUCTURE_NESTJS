@@ -70,7 +70,7 @@ module.exports = {
       host: ['143.244.149.248'],
       ref: 'pm2',
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
-      path: '/var/www/production1',
+      path: '/var/www/production2',
       'post-deploy':
         'npm cache clean --force && rm -rf node_modules && npm install && npm run build && pm2-runtime start ecosystem.config.js --env production',
     },
