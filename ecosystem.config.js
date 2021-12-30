@@ -20,7 +20,7 @@ module.exports = {
       host: ['143.244.149.248'],
       ref: 'pm2',
       repo: 'git@github.com:Remah-Amr/BE_STRUCTURE_NESTJS.git',
-      path: '~/',
+      path: '/var/www/production',
       'post-deploy': 'npm install',
     },
   },
