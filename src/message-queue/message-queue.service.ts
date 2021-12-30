@@ -32,7 +32,7 @@ export class MessageQueueService
       });
 
       this._connection.on('connect', function () {
-        console.log('\x1b[32m%s\x1b[0m', '[!] AMQP Connected Update1: ', connectionUrl);
+        console.log('\x1b[32m%s\x1b[0m', '[!] AMQP Connected Update2: ', connectionUrl);
         resolve();
       });
 
