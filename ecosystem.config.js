@@ -30,6 +30,8 @@ module.exports = {
         AMQP_URL:
           'amqps://kmuergjm:Q3oBdA_iX3triTcv_2YopwdL4AtHkz8D@jaguar.rmq.cloudamqp.com/kmuergjm?heartbeat=45',
         PORT: 8080,
+        PM2_PUBLIC_KEY: 'ct5pc2xkxt2ytgi',
+        PM2_SECRET_KEY: 'sbnxf64l4csfksi',
       },
     },
     {
@@ -60,6 +62,8 @@ module.exports = {
         AMQP_URL:
           'amqps://kmuergjm:Q3oBdA_iX3triTcv_2YopwdL4AtHkz8D@jaguar.rmq.cloudamqp.com/kmuergjm?heartbeat=45',
         PORT: 8080,
+        PM2_PUBLIC_KEY: 'ct5pc2xkxt2ytgi',
+        PM2_SECRET_KEY: 'sbnxf64l4csfksi',
       },
     },
   ],
