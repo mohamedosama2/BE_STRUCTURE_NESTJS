@@ -13,4 +13,14 @@ module.exports = {
       instances: 1,
     },
   ],
+  deploy: {
+    production: {
+      user: 'root',
+      host: ['143.244.149.248'],
+      ref: 'pm2',
+      repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS',
+      path: 'creds.pem',
+      'post-deploy': 'npm install',
+    },
+  },
 };
