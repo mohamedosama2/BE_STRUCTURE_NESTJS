@@ -76,7 +76,7 @@ module.exports = {
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
       path: '/var/www/production5',
       'post-deploy':
-        'npm install && npm run build && pm2-runtime start ecosystem.config.js --env production && pm2 save',
+        'npm install && npm run build &&  pm2 reload ecosystem.config.js --env production && pm2 save',
     },
   },
 };
