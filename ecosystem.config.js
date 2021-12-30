@@ -17,7 +17,7 @@ module.exports = {
     production: {
       // "key"  : ".ssh/creds.pem",
       user: 'root',
-      host: ['143.244.149.248'],
+      host: ['143.244.149.248:8080'],
       ref: 'pm2',
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
       path: '/var/www/production',
