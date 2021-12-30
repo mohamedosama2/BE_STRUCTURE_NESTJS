@@ -15,11 +15,12 @@ module.exports = {
   ],
   deploy: {
     production: {
+      "key"  : "creds.pem",
       user: 'root',
       host: ['143.244.149.248'],
       ref: 'pm2',
       repo: 'git@github.com:Remah-Amr/BE_STRUCTURE_NESTJS.git',
-      path: '',
+      path: '/',
       'post-deploy': 'npm install',
     },
   },
