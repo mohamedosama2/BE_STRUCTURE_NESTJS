@@ -15,7 +15,7 @@ module.exports = {
   ],
   deploy: {
     production: {
-      "key"  : "creds.pem",
+      "key"  : "/ssh/creds.pem",
       user: 'root',
       host: ['143.244.149.248'],
       ref: 'pm2',
