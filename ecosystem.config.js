@@ -15,11 +15,11 @@ module.exports = {
   ],
   deploy: {
     production: {
-      "key"  : ".ssh/creds.pem",
+      // "key"  : ".ssh/creds.pem",
       user: 'root',
       host: ['143.244.149.248'],
       ref: 'pm2',
-      repo: 'git@github.com:Remah-Amr/BE_STRUCTURE_NESTJS.git',
+      repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
       path: '/var/www/production',
       'post-deploy': 'npm install',
     },
