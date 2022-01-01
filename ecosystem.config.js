@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Nest App',
+      name: 'Nest App 2',
       script: './dist/main.js',
       instances: '2',
       exec_mode: 'cluster',
@@ -29,13 +29,13 @@ module.exports = {
           'amqps://zcfvyzvh:cKIn4m4ZbwR-Y0lmhAfOFcmlnksvzed5@fox.rmq.cloudamqp.com/zcfvyzvh?heartbeat:60',
         AMQP_URL:
           'amqps://kmuergjm:Q3oBdA_iX3triTcv_2YopwdL4AtHkz8D@jaguar.rmq.cloudamqp.com/kmuergjm?heartbeat=45',
-        PORT: 8080,
+        PORT: 8081,
         PM2_PUBLIC_KEY: 'ct5pc2xkxt2ytgi',
         PM2_SECRET_KEY: 'sbnxf64l4csfksi',
       },
     },
     {
-      name: 'Consumer',
+      name: 'Consumer 2',
       script: './dist/message-queue/worker.js',
       instances: 1,
       env_production: {
@@ -61,7 +61,7 @@ module.exports = {
           'amqps://zcfvyzvh:cKIn4m4ZbwR-Y0lmhAfOFcmlnksvzed5@fox.rmq.cloudamqp.com/zcfvyzvh?heartbeat:60',
         AMQP_URL:
           'amqps://kmuergjm:Q3oBdA_iX3triTcv_2YopwdL4AtHkz8D@jaguar.rmq.cloudamqp.com/kmuergjm?heartbeat=45',
-        PORT: 8080,
+        PORT: 8081,
         PM2_PUBLIC_KEY: 'ct5pc2xkxt2ytgi',
         PM2_SECRET_KEY: 'sbnxf64l4csfksi',
       },
@@ -74,7 +74,7 @@ module.exports = {
       host: ['165.227.107.178'],
       ref: 'pm2',
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
-      path: '/var/www/production1',
+      path: '/var/www/production2',
       'post-deploy':
         'npm install && npm run build &&  pm2 reload ecosystem.config.js --env production && pm2 save',
     },
