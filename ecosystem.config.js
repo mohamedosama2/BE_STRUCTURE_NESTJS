@@ -29,7 +29,7 @@ module.exports = {
           'amqps://zcfvyzvh:cKIn4m4ZbwR-Y0lmhAfOFcmlnksvzed5@fox.rmq.cloudamqp.com/zcfvyzvh?heartbeat:60',
         AMQP_URL:
           'amqps://kmuergjm:Q3oBdA_iX3triTcv_2YopwdL4AtHkz8D@jaguar.rmq.cloudamqp.com/kmuergjm?heartbeat=45',
-        PORT: 8080,
+        PORT: 8081,
         PM2_PUBLIC_KEY: 'ct5pc2xkxt2ytgi',
         PM2_SECRET_KEY: 'sbnxf64l4csfksi',
       },
@@ -61,7 +61,7 @@ module.exports = {
           'amqps://zcfvyzvh:cKIn4m4ZbwR-Y0lmhAfOFcmlnksvzed5@fox.rmq.cloudamqp.com/zcfvyzvh?heartbeat:60',
         AMQP_URL:
           'amqps://kmuergjm:Q3oBdA_iX3triTcv_2YopwdL4AtHkz8D@jaguar.rmq.cloudamqp.com/kmuergjm?heartbeat=45',
-        PORT: 8080,
+        PORT: 8081,
         PM2_PUBLIC_KEY: 'ct5pc2xkxt2ytgi',
         PM2_SECRET_KEY: 'sbnxf64l4csfksi',
       },
