@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Nest App 2',
+      name: 'Nest App 4',
       script: './dist/main.js',
       instances: '2',
       exec_mode: 'cluster',
@@ -35,7 +35,7 @@ module.exports = {
       },
     },
     {
-      name: 'Consumer 2',
+      name: 'Consumer 4',
       script: './dist/message-queue/worker.js',
       instances: 1,
       env_production: {
@@ -74,7 +74,7 @@ module.exports = {
       host: ['142.93.178.238'],
       ref: 'pm2',
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
-      path: '/var/www/production1',
+      path: '/var/www/production2',
       'post-deploy':
         'npm install && npm run build &&  pm2 reload ecosystem.config.js --env production && pm2 save',
     },
