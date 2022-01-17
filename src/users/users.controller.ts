@@ -106,6 +106,6 @@ export class UsersController {
     for (let i = 0; i < 100000; i++) {
       for (let j = 0; j < 100000; j++) {}
     }
-    console.log(data);
+    console.log('successful', data);
   }
 }

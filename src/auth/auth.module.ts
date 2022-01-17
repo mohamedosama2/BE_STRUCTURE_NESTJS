@@ -31,8 +31,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
   providers: [
     AuthService,
     GoogleOauthStrategy,
-    { provide: APP_GUARD, useClass: JwtAuthGuard },
-    { provide: APP_GUARD, useClass: RolesGuard },
+    // { provide: APP_GUARD, useClass: JwtAuthGuard },
+    // { provide: APP_GUARD, useClass: RolesGuard },
   ],
   exports: [AuthService],
 })
