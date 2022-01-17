@@ -23,6 +23,9 @@ async function bootstrap() {
     AppModule,
     {
       transport: Transport.TCP,
+      options: {
+        port: 8001,
+      },
     },
   );
   app.listen();
