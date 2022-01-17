@@ -16,6 +16,7 @@ import { Student } from './users/models/student.model';
 import { Teacher } from './users/models/teacher.model';
 import { FilterQueryOptionsUser } from './users/dto/filterQueryOptions.dto';
 import ParamsOrQueryWithId from './utils/paramsOrQueryWithId.dto';
+import { Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -33,6 +34,15 @@ async function bootstrap() {
     }),
   );
   app.useGlobalFilters(new AllExceptionsFilter());
+
+  // Then combine it with your microservice
+  const microservice = app.connectMicroservice({
+    transport: Transport.TCP,
+    options: {
+      port: 8080,
+    },
+  });
+
   // swagger config
   const options = new DocumentBuilder()
     .setTitle('NEST STRUCTURE')
@@ -54,6 +64,7 @@ async function bootstrap() {
     ],
   });
   SwaggerModule.setup('api', app, document, customOptions);
-  await app.listen(process.env.PORT || 3000);
+  await app.startAllMicroservices();
+  await app.listen(process.env.PORT || 8081);
 }
 bootstrap();

@@ -25,6 +25,7 @@ import { StudentDocument } from 'src/users/models/student.model';
 import { FilterQuery } from 'mongoose';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { UserRepository } from 'src/users/users.repository';
+import { ClientProxy } from '@nestjs/microservices';
 
 @ApiTags('AUTH')
 @Controller('auth')
@@ -34,7 +35,12 @@ export class AuthController {
     private readonly userRepository: UserRepository,
     private readonly phoneConfirmationService: PhoneConfirmationService,
     @Inject(REQUEST) private readonly req: Record<string, unknown>,
+    @Inject('MATH_SERVICE') private client: ClientProxy,
   ) {}
+
+  async onApplicationBootstrap() {
+    await this.client.connect();
+  }
 
   @Public()
   @Post('/signup')
@@ -53,6 +59,7 @@ export class AuthController {
     user: UserDocument;
     token: string;
   }> {
+    this.client.emit<number>('user_created', { remah: 'remah' });
     return await this.authService.login(LoginDto);
   }
 

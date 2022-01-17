@@ -34,6 +34,7 @@ import { ApiPaginatedResponse } from 'src/utils/pagination/apiPaginatedResponse'
 import { Student } from './models/student.model';
 import { Teacher } from './models/teacher.model';
 import { FilterQueryOptionsUser } from './dto/filterQueryOptions.dto';
+import { EventPattern } from '@nestjs/microservices';
 
 @ApiBearerAuth()
 @ApiTags('USERS')
@@ -98,5 +99,13 @@ export class UsersController {
     return await this.usersService.findOne({
       _id: id,
     } as FilterQuery<UserDocument>);
+  }
+
+  @EventPattern('user_created')
+  async handleUserCreated(data: Record<string, unknown>) {
+    for (let i = 0; i < 100000; i++) {
+      for (let j = 0; j < 100000; j++) {}
+    }
+    console.log(data);
   }
 }

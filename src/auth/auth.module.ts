@@ -9,6 +9,7 @@ import { RolesGuard } from './guards/roles.guard';
 import { GoogleOauthStrategy } from './strategies/googleStrategy.passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
@@ -22,6 +23,9 @@ import { JwtModule } from '@nestjs/jwt';
       }),
       inject: [ConfigService],
     }),
+    ClientsModule.register([
+      { name: 'MATH_SERVICE', transport: Transport.TCP },
+    ]),
   ],
   controllers: [AuthController],
   providers: [
