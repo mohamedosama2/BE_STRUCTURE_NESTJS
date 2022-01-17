@@ -24,7 +24,14 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
       inject: [ConfigService],
     }),
     ClientsModule.register([
-      { name: 'MATH_SERVICE', transport: Transport.TCP },
+      {
+        name: 'MATH_SERVICE',
+        transport: Transport.TCP,
+        options: {
+          host: 'localhost',
+          port: 8080,
+        },
+      },
     ]),
   ],
   controllers: [AuthController],

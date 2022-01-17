@@ -36,12 +36,13 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter());
 
   // Then combine it with your microservice
-  const microservice = app.connectMicroservice({
-    transport: Transport.TCP,
-    options: {
-      port: 8080,
-    },
-  });
+  // const microservice = app.connectMicroservice({
+  //   transport: Transport.TCP,
+  //   options: {
+  //     host: '127.0.0.1',
+  //     port: 3000,
+  //   },
+  // });
 
   // swagger config
   const options = new DocumentBuilder()
@@ -64,7 +65,7 @@ async function bootstrap() {
     ],
   });
   SwaggerModule.setup('api', app, document, customOptions);
-  await app.startAllMicroservices();
+  // await app.startAllMicroservices();
   await app.listen(process.env.PORT || 8081);
 }
 bootstrap();
