@@ -16,55 +16,15 @@ import { Student } from './users/models/student.model';
 import { Teacher } from './users/models/teacher.model';
 import { FilterQueryOptionsUser } from './users/dto/filterQueryOptions.dto';
 import ParamsOrQueryWithId from './utils/paramsOrQueryWithId.dto';
-import { Transport } from '@nestjs/microservices';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.use(logger('dev'));
-  app.enableCors();
-  app.use(helmet());
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
-      transformOptions: {
-        enableImplicitConversion: true,
-      },
-    }),
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: Transport.TCP,
+    },
   );
-  app.useGlobalFilters(new AllExceptionsFilter());
-
-  // Then combine it with your microservice
-  const microservice = app.connectMicroservice({
-    transport: Transport.TCP,
-    options: {
-      port: 8080,
-    },
-  });
-
-  // swagger config
-  const options = new DocumentBuilder()
-    .setTitle('NEST STRUCTURE')
-    .setDescription('The Nest.js structure API description')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const customOptions: SwaggerCustomOptions = {
-    swaggerOptions: {
-      persistAuthorization: true,
-    },
-  };
-  const document = SwaggerModule.createDocument(app, options, {
-    extraModels: [
-      PaginatedDto,
-      User,
-      FilterQueryOptionsUser,
-      ParamsOrQueryWithId,
-    ],
-  });
-  SwaggerModule.setup('api', app, document, customOptions);
-  await app.startAllMicroservices();
-  await app.listen(process.env.PORT || 8081);
+  app.listen();
 }
 bootstrap();
