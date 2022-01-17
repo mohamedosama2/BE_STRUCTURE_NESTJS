@@ -28,7 +28,6 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'MATH_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
           port: 8080,
         },
       },
