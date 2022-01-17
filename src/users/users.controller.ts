@@ -103,9 +103,10 @@ export class UsersController {
 
   @EventPattern('user_created')
   async handleUserCreated(data: Record<string, unknown>) {
+    console.log('successful_1', data);
     for (let i = 0; i < 100000; i++) {
       for (let j = 0; j < 100000; j++) {}
     }
-    console.log('successful', data);
+    console.log('successful_2', data);
   }
 }
