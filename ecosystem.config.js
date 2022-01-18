@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Micro-service subsciber',
+      name: 'Micro-service Main',
       script: './dist/main.js',
       instances: '2',
       exec_mode: 'cluster',
@@ -42,7 +42,7 @@ module.exports = {
       host: ['137.184.204.129'],
       ref: 'microservices-main',
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
-      path: '/var/www/production2',
+      path: '/var/www/production4',
       'post-deploy':
         'npm install && npm run build &&  pm2 reload ecosystem.config.js --env production && pm2 save',
     },
