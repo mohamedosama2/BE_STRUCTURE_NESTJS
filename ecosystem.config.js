@@ -40,7 +40,7 @@ module.exports = {
       // "key"  : ".ssh/creds.pem",
       user: 'root',
       host: ['137.184.25.34'],
-      ref: 'socket-instances',
+      ref: 'microservices-main',
       repo: 'https://Remah:remah654312@gitlab.com/Remah/be-nest-deploy.git',
       path: '/var/www/production8',
       'post-deploy':
