@@ -39,7 +39,7 @@ module.exports = {
     production: {
       // "key"  : ".ssh/creds.pem",
       user: 'root',
-      host: ['137.184.204.129'],
+      host: ['167.172.146.28'],
       ref: 'microservices-main',
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
       path: '/var/www/production4',
