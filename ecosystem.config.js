@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Micro-service subsciber',
+      name: 'Micro-service',
       script: './dist/main.js',
       instances: '2',
       exec_mode: 'cluster',
