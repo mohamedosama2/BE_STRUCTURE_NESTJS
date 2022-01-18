@@ -9,7 +9,7 @@ module.exports = {
       env_production: {
         NODE_ENV: 'production',
         MONGODB_URI:
-          'mongodb://remah:remah123456@localhost:27017/?authSource=admin',
+          'mongodb://remah:remah123456@localhost:27017/test?authSource=admin',
         api_key: 'remah',
         CLOUDINARY_URL:
           'cloudinary://716494354337253:x5gdQ2S2bshPvJ0YmvEwd4715YQ@hamza2021',
@@ -39,7 +39,7 @@ module.exports = {
     production: {
       // "key"  : ".ssh/creds.pem",
       user: 'root',
-      host: ['167.172.146.28'],
+      host: ['137.184.25.34'],
       ref: 'microservices-main',
       repo: 'https://github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
       path: '/var/www/production4',
