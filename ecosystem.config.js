@@ -9,7 +9,7 @@ module.exports = {
       env_production: {
         NODE_ENV: 'production',
         MONGODB_URI:
-          'mongodb://remah:remah123456@localhost:27017/test?authSource=admin',
+          '',
         api_key: 'remah',
         CLOUDINARY_URL:
           'cloudinary://716494354337253:x5gdQ2S2bshPvJ0YmvEwd4715YQ@hamza2021',
@@ -41,7 +41,7 @@ module.exports = {
       user: 'root',
       host: ['137.184.25.34'],
       ref: 'microservices-main',
-      repo: 'https://Remah:remah654312@gitlab.com/Remah/be-nest-deploy.git',
+      repo: '',
       path: '/var/www/production8',
       'post-deploy':
         'npm install && npm run build &&  pm2 reload ecosystem.config.js --env production && pm2 save',
