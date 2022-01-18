@@ -41,7 +41,7 @@ module.exports = {
       user: 'root',
       host: ['137.184.25.34'],
       ref: 'microservices-main',
-      repo: 'https://Remah-Amr:remah654312@github.com/Remah-Amr/BE_STRUCTURE_NESTJS.git',
+      repo: 'https://Remah:remah654312@gitlab.com/Remah/be-nest-deploy.git',
       path: '/var/www/production8',
       'post-deploy':
         'npm install && npm run build &&  pm2 reload ecosystem.config.js --env production && pm2 save',
