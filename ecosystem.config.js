@@ -3,13 +3,13 @@ module.exports = {
     {
       name: 'Micro-service Main',
       script: './dist/main.js',
-      instances: '2',
+      instances: '1',
       exec_mode: 'cluster',
       autorestart: true,
       env_production: {
         NODE_ENV: 'production',
         MONGODB_URI:
-          'mongodb+srv://Admin:Admin123456@bassthalk.7nkfp.mongodb.net/dbtest1?retryWrites=true&w=majority',
+          'mongodb://remah:remah123456@localhost:27017/?authSource=admin',
         api_key: 'remah',
         CLOUDINARY_URL:
           'cloudinary://716494354337253:x5gdQ2S2bshPvJ0YmvEwd4715YQ@hamza2021',
