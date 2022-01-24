@@ -35,7 +35,7 @@ export enum UserRole {
   },
 })
 export class User {
-  id: string;
+  id?: string;
   @Prop({
     index: true,
     unique: true,

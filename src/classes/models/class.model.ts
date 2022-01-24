@@ -21,6 +21,8 @@ export type ClassDocument = Class & Document;
   },
 })
 export class Class {
+  id?: string;
+
   @Prop({
     required: true,
     type: [NameSchema],
