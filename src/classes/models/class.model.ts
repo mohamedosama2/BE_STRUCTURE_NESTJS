@@ -27,7 +27,7 @@ export class Class {
     required: true,
     type: [NameSchema],
   })
-  names: Name[];
+  names: Record<string, any>[];
 }
 
 const ClassSchema = SchemaFactory.createForClass(Class);

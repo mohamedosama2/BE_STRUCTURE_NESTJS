@@ -41,14 +41,13 @@ export abstract class BaseAbstractRepository<T> {
   public async findAllWithPaginationOption(
     queryFiltersAndOptions: any,
     arrayOfFilters: string[],
-    arrayOfOptions: string[] = [],
+    extraOptions: PaginateOptions = {},
   ): Promise<PaginateResult<TDocument<T>> | TDocument<T>[]> {
     const filters: FilterQuery<TDocument<T>> = _.pick(
       queryFiltersAndOptions,
       arrayOfFilters,
     );
     const options: PaginateOptions = _.pick(queryFiltersAndOptions, [
-      ...arrayOfOptions,
       'page',
       'limit',
     ]);
@@ -56,7 +55,7 @@ export abstract class BaseAbstractRepository<T> {
     if (queryFiltersAndOptions.allowPagination) {
       docs = await (this.model as PaginateModel<TDocument<T>>).paginate(
         filters,
-        options,
+        { ...options, ...extraOptions },
       );
     } else {
       docs = await this.model.find(filters).setOptions(options);

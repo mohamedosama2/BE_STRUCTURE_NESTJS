@@ -8,6 +8,7 @@ import { PhoneConfirmationModule } from './phone-confirmation/phone-confirmation
 import { DatabaseModule } from './database.module';
 import { ChatModule } from './chat/chat.module';
 import { ClassesModule } from './classes/classes.module';
+import { CoursesModule } from './courses/courses.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -17,6 +18,7 @@ import { ClassesModule } from './classes/classes.module';
     PhoneConfirmationModule,
     ChatModule,
     ClassesModule,
+    CoursesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

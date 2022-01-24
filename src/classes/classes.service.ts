@@ -7,6 +7,7 @@ import { ClassDocument } from './models/class.model';
 import { ClassRepository } from './class.repository';
 import { CreateClassDto } from './dto/create-class.dto';
 import { UpdateClassDto } from './dto/update-class.dto';
+import { FilterQuery } from 'mongoose';
 
 @Injectable()
 export class ClassesService {
@@ -29,7 +30,10 @@ export class ClassesService {
     id: string,
     updateClassDto: UpdateClassDto,
   ): Promise<ClassDocument> {
-    return await this.ClassRepository.updateOne({ _id: id }, updateClassDto);
+    return await this.ClassRepository.updateOne(
+      { _id: id } as FilterQuery<ClassDocument>,
+      updateClassDto,
+    );
   }
 
   async remove(id: string): Promise<void> {

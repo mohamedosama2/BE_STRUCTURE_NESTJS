@@ -16,6 +16,9 @@ import { Student } from './users/models/student.model';
 import { Teacher } from './users/models/teacher.model';
 import { FilterQueryOptionsUser } from './users/dto/filterQueryOptions.dto';
 import ParamsWithId from './utils/paramsWithId.dto';
+import { Course } from './courses/models/course.model';
+import { Class } from './classes/models/class.model';
+import { Name } from './classes/models/name.model';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -49,6 +52,9 @@ async function bootstrap() {
     extraModels: [
       PaginatedDto,
       User,
+      Course,
+      Name,
+      Class,
       FilterQueryOptionsUser,
       ParamsWithId,
     ],
